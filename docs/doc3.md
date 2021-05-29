@@ -16,7 +16,7 @@ It should start downloading multiple files and give you an output such as ``` 34
 
 Run ``` docker logs ``` followed by the number you just copyed. For example ``` docker logs 3493783796b56777987287120c5e3d4defa418d58825d22aa7b1a7c96dfa6604 ```.
 
-This should show the logs of the skill and at the bottom you should see the line ``` your url is: ``` Followed by the url.
+This should show the logs of the skill and at the bottom you should see the line ``` Your public URL for accessing your local service ``` Followed by the url.
 
 Copy this down as you will need this later. 
 
