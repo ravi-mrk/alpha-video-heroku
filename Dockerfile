@@ -1,7 +1,9 @@
 FROM andrewstech/alpha-video-baseplate:latest
 WORKDIR /app
 COPY entrypoint.sh entrypoint.sh
+COPY data.sh data.sh
 RUN chmod 777 entrypoint.sh
+RUN chmod 777 data.sh
 COPY /thealphavideo /app
 EXPOSE 5000
 ENV FLASK_ENV=development
