@@ -7,9 +7,14 @@ echo " / ____ \| |____| |    | |  | |/ ____ \     \  /   _| |_| |__| | |___| |__
 echo "/_/    \_\______|_|    |_|  |_/_/    \_\     \/   |_____|_____/|______\____/ "
 
 echo "For support please visit the Github Project or send a message on our Discord server."
+FILE=~/.bst/config
+if [[ -f "$FILE" ]]; then
+    echo "$FILE exists."
+fi
+
 if [ -z "$localtunnel" ]
 then
-      export localtunnel=true
+      export localtunnel=false
 else
       echo "startup"
 fi
