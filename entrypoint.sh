@@ -7,9 +7,14 @@ echo " / ____ \| |____| |    | |  | |/ ____ \     \  /   _| |_| |__| | |___| |__
 echo "/_/    \_\______|_|    |_|  |_/_/    \_\     \/   |_____|_____/|______\____/ "
 
 echo "For support please visit the Github Project or send a message on our Discord server."
-FILE=~/.bst/config
+
+FILE=/data/config
 if [[ -f "$FILE" ]]; then
     echo "$FILE exists."
+    mkdir -p ~/.bst/
+    cp /data/config ~/.bst/config
+
+
 fi
 
 if [ -z "$localtunnel" ]
