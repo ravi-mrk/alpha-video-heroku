@@ -1,0 +1,6 @@
+required_labels:
+  - ready
+blacklisted_labels:
+  - wip
+apply_labels:
+  - merge
