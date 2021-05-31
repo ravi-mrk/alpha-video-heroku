@@ -27,9 +27,6 @@ To run the Application over your own Domain, you need an Reverse-Proxy on Port 4
 If you just want it to work, here are some Template-Configurations:
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-
 <Tabs
   defaultValue="Nginx"
   values={[
@@ -76,8 +73,7 @@ server {
   <TabItem value="Nginx Proxy Manager">Coming Soon 🕒</TabItem>
   <TabItem value="HAProxy">Coming Soon 🕒</TabItem>
   <TabItem value="Traefik">Coming Soon 🕒</TabItem>
-</Tabs>;
-
+</Tabs>
 ```
 
 
