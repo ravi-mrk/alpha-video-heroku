@@ -19,7 +19,7 @@ In the Template you will find 1 Variable, 1 Port and one Path.
 * The Path is needed to save the Configuration of [bespoken](https://bespoken.io) to save the generated url.
 
 
-# Running over your Own Subdomain
+## Running over your Own Subdomain
 
 
 To run the Application over your own Domain, you need an Reverse-Proxy on Port 443 with SSL Cerrtificates.
