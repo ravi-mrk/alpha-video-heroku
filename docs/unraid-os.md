@@ -26,6 +26,7 @@ To run the Application over your own Domain, you need an Reverse-Proxy on Port 4
 
 If you just want it to work, here are some Template-Configurations:
 
+```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
@@ -38,6 +39,7 @@ import TabItem from '@theme/TabItem';
 	{label: 'Traefik', value: 'Traefik'},
   ]}>
   <TabItem value="Nginx">
+ ```
 ```
   server {
     server_name alpha-video.example.com;
