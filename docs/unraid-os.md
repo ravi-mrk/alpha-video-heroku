@@ -54,7 +54,7 @@ server {
 
 
     location / {
-        set $alpha_video http://192.168.178.113:5000;
+        set $alpha_video http://192.168.1.x:5000;
         proxy_pass $alpha_video;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
