@@ -26,18 +26,9 @@ To run the Application over your own Domain, you need an Reverse-Proxy on Port 4
 
 If you just want it to work, here are some Template-Configurations:
 
-```mdx-code-block
-<Tabs
-  defaultValue="Nginx"
-  values={[
-    {label: 'Nginx', value: 'Nginx'},
-    {label: 'Nginx Proxy Manager', value: 'Nginx Proxy Manager'},
-    {label: 'HAProxy', value: 'HAProxy'},
-	{label: 'Traefik', value: 'Traefik'},
-  ]}>
-  <TabItem value="Nginx">
 
-
+### Nginx
+```
   server {
     server_name alpha-video.example.com;
     listen 80;
@@ -66,15 +57,9 @@ server {
 }
 
 }
-
-
-  
-  </TabItem>
-  <TabItem value="Nginx Proxy Manager">Coming Soon 🕒</TabItem>
-  <TabItem value="HAProxy">Coming Soon 🕒</TabItem>
-  <TabItem value="Traefik">Coming Soon 🕒</TabItem>
-</Tabs>
 ```
+TODO: Adding Nginx-Proxy-Manager, HAProxy & Traefik
+
 
 
 After you are done with the Configuration you can hit "Apply" and Continue [HERE](https://alpha-video.andrewstech.me/docs/doc4)
