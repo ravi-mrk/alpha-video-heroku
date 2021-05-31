@@ -34,5 +34,7 @@
 .featureImage {
   height: 200px;
   object-fit: contain;
+  margin-left: auto;
+  margin-right: auto;
   width: 200px;
 }
