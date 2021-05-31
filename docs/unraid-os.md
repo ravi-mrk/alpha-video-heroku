@@ -39,8 +39,8 @@ import TabItem from '@theme/TabItem';
 	{label: 'Traefik', value: 'Traefik'},
   ]}>
   <TabItem value="Nginx">
-```
-```
+
+```jsx
   server {
     server_name alpha-video.example.com;
     listen 80;
@@ -78,7 +78,7 @@ server {
   <TabItem value="Traefik">Coming Soon 🕒</TabItem>
 </Tabs>;
 
-
+```
 
 
 After you are done with the Configuration you can hit "Apply" and Continue [HERE](https://alpha-video.andrewstech.me/docs/doc4)
