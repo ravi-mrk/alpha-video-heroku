@@ -31,7 +31,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs
-  defaultValue="apple"
+  defaultValue="Nginx"
   values={[
     {label: 'Nginx', value: 'Nginx'},
     {label: 'Nginx Proxy Manager', value: 'Nginx Proxy Manager'},
