@@ -30,7 +30,7 @@ const features = [
     imageUrl: 'img/python-logo.svg',
     description: (
       <>
-        Written in Python3.7.
+        The App is Written in Python Version 3.7 .
       </>
     ),
   },
