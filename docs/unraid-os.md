@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
 	{label: 'Traefik', value: 'Traefik'},
   ]}>
   <TabItem value="Nginx">
-  ```
+```
   server {
     server_name alpha-video.example.com;
     listen 80;
@@ -68,7 +68,7 @@ server {
 
 }
 
-  ```
+```
   
   </TabItem>
   <TabItem value="Nginx Proxy Manager">Coming Soon 🕒</TabItem>
