@@ -58,7 +58,11 @@ server {
 
 }
 ```
-TODO: Adding Nginx-Proxy-Manager, HAProxy & Traefik
+### Nginx Proxy Manager
+
+Work in progress 
+
+TODO: Adding HAProxy & Traefik
 
 
 
