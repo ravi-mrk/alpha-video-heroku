@@ -15,6 +15,13 @@ if [[ -f "$FILE" ]]; then
     cp /data/config ~/.bst/config
 
 
+DATA=/data/database.db
+if [[ -f "$DATA" ]]; then
+    echo "$DATA exists."
+    cp /data/database.db ~/app/database.db
+else
+     python3 /app/init_db.py
+     echo made database
 fi
 
 if [ -z "$localtunnel" ]
