@@ -13,16 +13,8 @@ if [[ -f "$FILE" ]]; then
     echo "$FILE exists."
     mkdir -p ~/.bst/
     cp /data/config ~/.bst/config
-
-
-DATA=/data/database.db
-if [[ -f "$DATA" ]]; then
-    echo "$DATA exists."
     cp /data/database.db /app/database.db
-else
-     python3 /app/init_db.py
-     echo made database
-fi
+
 
 if [ -z "$localtunnel" ]
 then
@@ -30,6 +22,7 @@ then
 else
       echo "startup"
 fi
+
 echo "set nameserver to 1.1.1.1"
 echo nameserver 1.1.1.1 > /etc/resolv.conf
 echo "Starting"
