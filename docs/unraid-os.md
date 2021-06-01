@@ -4,6 +4,9 @@ title: Unraid
 sidebar_label: Unraid OS
 ---
 
+import useBaseUrl from '@docusaurus/useBaseUrl';
+
+
 To install Alpha-Video on your Unraid machine you need to open the Apps-Tab which you can access if you have Community-Applications (CA) installed.
 
 * Enter in the Search Alpha-Video to find the Application.
@@ -61,6 +64,9 @@ server {
 ### Nginx Proxy Manager
 
 In Nginx Proxy Manager click the Hosts button and choose proxy hosts from the dropdown.
+
+<img alt="ports" src={useBaseUrl('/img/port-photo.PNG')} />
+
 
 TODO: Adding HAProxy & Traefik
 
