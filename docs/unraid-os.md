@@ -63,10 +63,15 @@ server {
 ```
 ### Nginx Proxy Manager
 
-In Nginx Proxy Manager click the Hosts button and choose proxy hosts from the dropdown.
+In Nginx Proxy Manager click the Hosts button and choose proxy hosts from the dropdown. When the page loads up click Add a proxy Host.
+
+A new window will popup as shown below. Put your domain or subdomain in the domain box. Make sure the Scheme is set to http and the Foward hostname/Ip is the IP for your system running alpha-video. Set the port to 5000. Finally make sure websocket support is on.
 
 <img alt="ports" src={useBaseUrl('/img/port-photo.PNG')} />
 
+Now click the SSL tab and choose Request new certificate and force SSL. Enter your email in the email for let's encrypt box and tick the agree box. Now click save and it should be done and working. An example is shown bellow.
+
+<img alt="ssl" src={useBaseUrl('/img/ssl.PNG')} />
 
 TODO: Adding HAProxy & Traefik
 
