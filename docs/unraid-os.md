@@ -60,7 +60,7 @@ server {
 ```
 ### Nginx Proxy Manager
 
-Work in progress 
+In Nginx Proxy Manager click the Hosts button and choose proxy hosts from the dropdown.
 
 TODO: Adding HAProxy & Traefik
 
