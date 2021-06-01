@@ -18,7 +18,7 @@ if [[ -f "$FILE" ]]; then
 DATA=/data/database.db
 if [[ -f "$DATA" ]]; then
     echo "$DATA exists."
-    cp /data/database.db ~/app/database.db
+    cp /data/database.db /app/database.db
 else
      python3 /app/init_db.py
      echo made database
