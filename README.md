@@ -16,6 +16,7 @@ Any Questions ask them on Discord
 If you have any issues or want to help our with the project then visit the github page by clicking [here](https://github.com/unofficial-skills/alpha-video)
 
 If you would like to help fund projects like this then please click the donate button bellow and I will be forever grateful.
+
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/andrewstechyoutube)
 
 [![WINDOWS BUILD](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml/badge.svg)](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml)
