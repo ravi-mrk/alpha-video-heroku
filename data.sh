@@ -6,4 +6,4 @@ if [ ! -d /data ]; then
 fi
 echo Done
 cp config /data/config
-
+cp ~/app/database.db /data/database.db
