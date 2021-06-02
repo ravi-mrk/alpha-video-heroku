@@ -13,8 +13,9 @@ if [[ -f "$FILE" ]]; then
     echo "$FILE exists."
     mkdir -p ~/.bst/
     cp /data/config ~/.bst/config
-    cp /data/database.db /app/database.db
 
+
+fi
 
 if [ -z "$localtunnel" ]
 then
@@ -22,7 +23,6 @@ then
 else
       echo "startup"
 fi
-
 echo "set nameserver to 1.1.1.1"
 echo nameserver 1.1.1.1 > /etc/resolv.conf
 echo "Starting"
