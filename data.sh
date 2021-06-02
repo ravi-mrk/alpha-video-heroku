@@ -7,4 +7,3 @@ fi
 echo Done
 cp config /data/config
 cd /app
-cp database.db /data/database.db
