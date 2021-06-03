@@ -88,7 +88,7 @@ def not_found_error(error):
 
 if app.config["USE_NGROK"]:
     import public
-else
+else:
     import pages 
 
 
