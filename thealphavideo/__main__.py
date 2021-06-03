@@ -86,7 +86,10 @@ def not_found_error(error):
     return render_template('405.html'), 405
 
 
-if app.config.get("PUBLIC" == "True")
+if app.config.get("PUBLIC") == "True"
+    import public
+else
+    import pages 
 
 
 
