@@ -86,7 +86,7 @@ def not_found_error(error):
     return render_template('405.html'), 405
 
 
-if app.config["USE_NGROK"]:
+if app.config["PUBLIC"]:
     import public
 else:
     import pages 
