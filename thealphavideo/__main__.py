@@ -68,7 +68,7 @@ app = Flask(__name__)
 app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", True)
 app.config["JSON_AS_ASCII"] = False
 app.config['SECRET_KEY'] = 'dev'
-PUBLIC=os.environ.get("public", "False") == "True"
+app.config['PUBLIC']=os.environ.get("public", "False") == "True"
 app.config.from_mapping(
     BASE_URL="http://localhost:5000",
 )
