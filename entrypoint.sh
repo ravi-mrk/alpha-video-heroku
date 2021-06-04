@@ -26,6 +26,14 @@ else
 
 fi
 
+CONFIG-FILE=/data/options.json
+if [[ -f "$CONFIG-FILE" ]]; then
+    echo "$CONFIG-FILE exists."
+    CONFIG_PATH=/data/options.json
+    public=$(jq --raw-output '.community_host // empty' $CONFIG_PATH)
+
+fi
+
 if [ -z "$localtunnel" ]
 then
       export localtunnel=false
