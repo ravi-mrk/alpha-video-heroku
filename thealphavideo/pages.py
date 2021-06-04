@@ -1,5 +1,46 @@
 from __main__ import app
 from flask import Flask, render_template, request, url_for, flash, redirect, Response, session
+from pygtail import Pygtail
+from werkzeug.exceptions import abort
+import sqlite3
+import logging
+import datetime
+import os
+import sys
+import time
+import sentry_sdk
+from sentry_sdk.integrations.flask import FlaskIntegration
+
+# version 1.5
+
+
+def get_db_connection():
+    conn = sqlite3.connect('/data/database.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+
+def get_post(post_id):
+    conn = get_db_connection()
+    post = conn.execute('SELECT * FROM posts WHERE id = ?',
+                        (post_id,)).fetchone()
+    conn.close()
+    if post is None:
+        abort(404)
+    return post
+
+
+def start():
+    sentry_sdk.init(
+        dsn="https://d781c09d67f34a05b2b2d89193f4f2a0@o575799.ingest.sentry.io/5728581",
+        integrations=[FlaskIntegration()],
+        # Set traces_sample_rate to 1.0 to capture 100%
+        # of transactions for performance monitoring.
+        # We recommend adjusting this value in production.
+        traces_sample_rate=1.0
+    )
+
+
 
 @app.route('/')
 def index():
