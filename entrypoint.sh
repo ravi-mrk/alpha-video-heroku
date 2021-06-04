@@ -17,23 +17,6 @@ if [[ -f "$FILE" ]]; then
 fi
 
 
-DATA-FILE=/data/database.db
-if [[ -f "$DATA-FILE" ]]; then
-    echo "$DATA-FILE exists."
-    
-else
-    cp /app/database.db /data/database.db
-
-fi
-
-CONFIG-FILE=/data/options.json
-if [[ -f "$CONFIG-FILE" ]]; then
-    echo "$CONFIG-FILE exists."
-    CONFIG_PATH=/data/options.json
-    public=$(jq --raw-output '.community_host // empty' $CONFIG_PATH)
-
-fi
-
 if [ -z "$localtunnel" ]
 then
       export localtunnel=false
