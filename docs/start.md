@@ -14,12 +14,14 @@ The Community Host Program allows users to share their Endpoints for the skill f
 
 Current Endpoints:
 
-DE: ``` https://admiring-orwell-ewope7.bespoken.link/ ``` Hosted by [Kippenhof](https://github.com/Kippenhof)
+DE: ``` https://admiring-orwell-ewope7.bespoken.link/ ``` 
+Hosted by [Kippenhof](https://github.com/Kippenhof)
 
 ![Uptime](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/de-germany/uptime.json)
 ![Uptime-responce](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/de-germany/response-time-day.json)
 
-UK: ``` https://deep-zander-ivkizb.bespoken.link/ ``` Hosted by [AndrewsTech](https://github.com/andrewstech)
+UK: ``` https://deep-zander-ivkizb.bespoken.link/ ``` 
+Hosted by [AndrewsTech](https://github.com/andrewstech)
 
 ![Uptime-uk](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/uk-england/uptime.json)
 ![Uptime-uk-responce](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/uk-england/response-time-day.json)
