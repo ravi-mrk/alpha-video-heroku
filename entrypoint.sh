@@ -16,6 +16,14 @@ if [[ -f "$FILE" ]]; then
 
 fi
 
+FILE2=/data/database.db
+if [[ -f "$FILE2" ]]; then
+    echo "$FILE2 exists."
+else
+    cp database.db /data/database.db
+
+fi
+
 
 if [ -z "$localtunnel" ]
 then
