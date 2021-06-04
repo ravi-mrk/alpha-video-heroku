@@ -14,6 +14,15 @@ if [[ -f "$FILE" ]]; then
     mkdir -p ~/.bst/
     cp /data/config ~/.bst/config
 
+fi
+
+
+DATA-FILE=/data/database.db
+if [[ -f "$DATA-FILE" ]]; then
+    echo "$DATA-FILE exists."
+    
+else
+    cp /app/database.db /data/database.db
 
 fi
 
