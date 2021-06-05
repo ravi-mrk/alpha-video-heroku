@@ -22,5 +22,5 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: alpha-video
-        path: thealphavideo/dist/windows#
+        path: thealphavideo/dist/windows
   
