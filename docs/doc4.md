@@ -20,4 +20,4 @@ We now need to upload our interaction.json file, currently only English, German,
 If you are using windows you can press CTRL + A to select all the text the delete key to remove it.
 :::
 
-Now lets copy the new interaction.json file. Click [here](https://download.andrewstech.me/projects/alpha-video/) to view and copy the new code. Once copyed go back to the JSON Editor and paste it in. Once you have pasted it in scroll to the top and click save model.
+Now lets copy the new interaction.json file. Click [here](https://andrewstech.github.io/download-links/projects/alpha-video/) to view and copy the new code. Once copyed go back to the JSON Editor and paste it in. Once you have pasted it in scroll to the top and click save model.
