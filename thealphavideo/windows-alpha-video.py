@@ -67,10 +67,10 @@ ytdl_options = {
 
 ytdl = YoutubeDL(ytdl_options)
 app = Flask(__name__)
+ui = FlaskUI(app, port=5000, width=600, height=500)
 app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", True)
 app.config["JSON_AS_ASCII"] = False
 app.config['SECRET_KEY'] = 'dev'
-app.config['PUBLIC']=os.environ.get("public", "False") == "True"
 app.config.from_mapping(
     BASE_URL="http://localhost:5000",
 )
@@ -194,6 +194,7 @@ def show_env():
 @app.route("/logstream", methods=["GET"])
 def logstream():
     return render_template('logs.html')
+
 
 ask = Ask(app, '/api')
 
