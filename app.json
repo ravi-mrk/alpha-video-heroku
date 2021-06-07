@@ -1,0 +1,7 @@
+{
+  "name": "Alpha-video",
+  "description": "YouTube for ALexa",
+  "repository": "https://github.com/unofficial-skills/alpha-video",
+  "logo": "https://pngimg.com/uploads/youtube/youtube_PNG21.png",
+  "keywords": ["youtube", "youtube-alexa", "open-source"]
+}
