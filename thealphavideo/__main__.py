@@ -39,7 +39,6 @@ def start():
         # of transactions for performance monitoring.
         # We recommend adjusting this value in production.
         traces_sample_rate=1.0
-        release="unofficial-skills@84a299379625"
     )
 
 
