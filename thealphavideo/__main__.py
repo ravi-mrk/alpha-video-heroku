@@ -113,6 +113,8 @@ def handle_stop_intent():
     stop = render_template('stop')
     return statement(stop)
 
+def lambda_handler(event, _context):
+    return ask.run_aws_lambda(event)
 
 @ask.intent('AMAZON.CancelIntent')
 def handle_stop_intent():
