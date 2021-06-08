@@ -8,7 +8,7 @@ Alpha-Video now has native support for windows. No dependencies are required.
 
 You can download the latest version of the installer by clicking [here](https://github.com/unofficial-skills/alpha-video/releases/download/1.4/alpha-video.exe).
 
-When you open the program it will ask you to choose your desied sub domain name. Once you have entered it, a new window will appear displaying 
+
 
 ```
 By AndrewsTech
@@ -20,10 +20,10 @@ By AndrewsTech
 By AndrewsTech
 
 ```
-This means the skill is running. On the other window you should see the subdomain localtunnel has given you.
 
 You can now continue by clicking [here](https://alpha-video.andrewstech.me/docs/doc4/)
 
-:::caution
-If you close ether of the windows then the skill will stop.
-:::
+## WINGET
+
+Alpha-Video Is now avalibe on the Windows package Manager
+``` winget install alpha-video ```
