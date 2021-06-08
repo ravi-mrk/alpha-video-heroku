@@ -15,9 +15,9 @@ from flaskwebgui import FlaskUI
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 
-proc = subprocess.Popen(['start-bst.cmd'], 
-                        stdout=subprocess.PIPE, 
-                        stderr=subprocess.STDOUT)
+# proc = subprocess.Popen(['start-bst.cmd'], 
+#                        stdout=subprocess.PIPE, 
+#                        stderr=subprocess.STDOUT)
 # version 1.5
 
 
