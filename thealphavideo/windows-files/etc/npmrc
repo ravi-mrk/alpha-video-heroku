@@ -1,0 +1,5 @@
+cache = C:\Users\andrew\Downloads\node\cache
+globalconfig = C:\Users\andrew\Downloads\node\app\etc\npmrc
+globalignorefile = C:\Users\andrew\Downloads\node\app\etc\.npmignore
+init-module = C:\Users\andrew\Downloads\node\app\etc\.npm-init.js
+userconfig = C:\Users\andrew\Downloads\node\app\etc\npmrc
