@@ -4,6 +4,7 @@ from flask_ask_alphavideo import Ask, question, statement, convert_errors, audio
 from youtube_dl import YoutubeDL
 from werkzeug.exceptions import abort
 import sqlite3
+import subprocess
 import logging
 import datetime
 import os
@@ -13,6 +14,8 @@ import sentry_sdk
 from flaskwebgui import FlaskUI
 from sentry_sdk.integrations.flask import FlaskIntegration
 
+
+subprocess.call([r'start-bst.cmd'])
 
 # version 1.5
 
