@@ -16,15 +16,6 @@ from sentry_sdk.integrations.flask import FlaskIntegration
 
 
 
-proc = subprocess.Popen(['start.bat'],
-                        stdout=subprocess.PIPE,
-                        stderr=subprocess.STDOUT)
-
-
-
-
-
-
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
