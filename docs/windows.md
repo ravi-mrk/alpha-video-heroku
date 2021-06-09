@@ -6,7 +6,7 @@ sidebar_label: Windows
 
 Alpha-Video now has native support for windows. No dependencies are required.
 
-You can download the latest version of the installer by clicking [here](https://github.com/unofficial-skills/alpha-video/releases/download/1.4/alpha-video.exe).
+You can download the latest version of the installer by clicking [here](https://github.com/unofficial-skills/alpha-video/releases/download/1.7/alpha-video.exe).
 
 
 
