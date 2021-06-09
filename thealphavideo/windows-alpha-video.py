@@ -15,10 +15,18 @@ from flaskwebgui import FlaskUI
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 
-# proc = subprocess.Popen(['start-bst.cmd'], 
-#                        stdout=subprocess.PIPE, 
-#                        stderr=subprocess.STDOUT)
-# version 1.5
+import subprocess
+
+
+def startbst():
+    proc = subprocess.Popen(['start.bat'],
+                            stdout=subprocess.PIPE,
+                            stderr=subprocess.STDOUT)
+
+
+
+
+
 
 
 def get_db_connection():
@@ -308,6 +316,7 @@ def next_song():
 
     return question('noresult')
 
+startbst()
 
 if __name__ == "__main__":
     # app.run() for debug
