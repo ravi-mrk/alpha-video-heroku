@@ -9,11 +9,11 @@ import datetime
 import os
 import sys
 import time
-from sentry_sdk import last_event_id
+from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 # version 1.5
-
+set_user(PRODUCTION)
 
 def get_db_connection():
     conn = sqlite3.connect('/data/database.db')
