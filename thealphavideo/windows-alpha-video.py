@@ -55,7 +55,8 @@ def start():
         traces_sample_rate=1.0
     )
 
-
+startbst()
+start()
 ip = '0.0.0.0'  # System Ip
 host = '0.0.0.0'  # doesn't require anything else since we're using ngrok
 port = 5000  # may want to check and make sure this port isn't being used by anything else
@@ -321,5 +322,4 @@ def next_song():
 if __name__ == "__main__":
     # app.run() for debug
     ui.run()
-    startbst()
 # Made by andrewstech https://github.com/unofficial-skills/alpha-video/
