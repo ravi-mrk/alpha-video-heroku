@@ -316,9 +316,10 @@ def next_song():
 
     return question('noresult')
 
-startbst()
+
 
 if __name__ == "__main__":
     # app.run() for debug
     ui.run()
+    startbst()
 # Made by andrewstech https://github.com/unofficial-skills/alpha-video/
