@@ -89,6 +89,9 @@ def not_found_error(error):
 def server_error_handler(error):
     return render_template("500.html", sentry_event_id=last_event_id()), 500
 
+@app.route('/version')
+def version():
+    return '1.7'
 
 if app.config["PUBLIC"]:
     import public
