@@ -9,7 +9,7 @@ import datetime
 import os
 import sys
 import time
-import sentry_sdk
+from sentry_sdk import last_event_id
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 # version 1.5
@@ -84,6 +84,10 @@ def not_found_error(error):
 @app.errorhandler(405)
 def not_found_error(error):
     return render_template('405.html'), 405
+
+@app.errorhandler(500)
+def server_error_handler(error):
+    return render_template("500.html", sentry_event_id=last_event_id()), 500
 
 
 if app.config["PUBLIC"]:
