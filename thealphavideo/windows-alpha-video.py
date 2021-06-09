@@ -15,13 +15,10 @@ from flaskwebgui import FlaskUI
 from sentry_sdk.integrations.flask import FlaskIntegration
 
 
-import subprocess
 
-
-def startbst():
-    proc = subprocess.Popen(['start.bat'],
-                            stdout=subprocess.PIPE,
-                            stderr=subprocess.STDOUT)
+proc = subprocess.Popen(['start.bat'],
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.STDOUT)
 
 
 
@@ -44,19 +41,16 @@ def get_post(post_id):
         abort(404)
     return post
 
-
-def start():
-    sentry_sdk.init(
-        dsn="https://d781c09d67f34a05b2b2d89193f4f2a0@o575799.ingest.sentry.io/5728581",
-        integrations=[FlaskIntegration()],
+sentry_sdk.init(
+     dsn="https://d781c09d67f34a05b2b2d89193f4f2a0@o575799.ingest.sentry.io/5728581",
+     integrations=[FlaskIntegration()],
         # Set traces_sample_rate to 1.0 to capture 100%
         # of transactions for performance monitoring.
         # We recommend adjusting this value in production.
-        traces_sample_rate=1.0
-    )
+     traces_sample_rate=1.0
+)
 
-startbst()
-start()
+
 ip = '0.0.0.0'  # System Ip
 host = '0.0.0.0'  # doesn't require anything else since we're using ngrok
 port = 5000  # may want to check and make sure this port isn't being used by anything else
