@@ -21,6 +21,3 @@ If you would like to help fund projects like this then please click the donate b
 
 [![WINDOWS BUILD](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml/badge.svg)](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml)
 
-## Untested 
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
