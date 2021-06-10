@@ -30,4 +30,6 @@ Hosted by [AndrewsTech](https://github.com/andrewstech)
 
 If you wish to add your own Endpoint to the program then visit the get Involved channel on our discord server.
 
+[Status of community host - click here](https://unofficial-skills.github.io/alpha-video-community-host-status/)
+
 
