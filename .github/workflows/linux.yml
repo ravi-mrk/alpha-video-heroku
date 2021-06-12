@@ -1,0 +1,31 @@
+name: Linux-Builds
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Package Application
+      uses: JackMcKew/pyinstaller-action-linux@main
+      with:
+        path: thealphavideo
+    
+    - uses: papeloto/action-zip@v1
+      with:
+        files: thealphavideo/dist/linux/
+        dest: alpha-video-linux.zip
+        
+     
+    - uses: actions/upload-artifact@v2
+      with:
+        name: Alpha-video-Linux
+        path: alpha-video-linux.zip
