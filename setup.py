@@ -42,7 +42,7 @@ setup(
     author_email=PROJECT_EMAIL,
     packages=PACKAGES,
     include_package_data=True,
-    package_data={'thealphavideo': ['templates/*.html']},
+    package_data={'*'},
     zip_safe=False,
     install_requires=requirements,
     test_suite="tests",
