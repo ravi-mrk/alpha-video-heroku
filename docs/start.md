@@ -17,19 +17,14 @@ Current Endpoints:
 DE: ``` https://admiring-orwell-ewope7.bespoken.link/api ``` 
 Hosted by [Kippenhof](https://github.com/Kippenhof)
 
-![Uptime](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/de-germany/uptime.json)
-![Uptime-responce](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/de-germany/response-time-day.json)
 
 UK: ``` https://deep-zander-ivkizb.bespoken.link/api ``` 
 Hosted by [AndrewsTech](https://github.com/andrewstech)
-
-![Uptime-uk](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/uk-england/uptime.json)
-![Uptime-uk-responce](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/unofficial-skills/alpha-video-community-host-status/master/api/uk-england/response-time-day.json)
 
 
 
 If you wish to add your own Endpoint to the program then visit the get Involved channel on our discord server.
 
-[Status of community host - click here](https://unofficial-skills.github.io/alpha-video-community-host-status/)
+
 
 
