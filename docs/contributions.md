@@ -29,3 +29,4 @@ DavidS - Translated skill to French language
 [mrapolonio-dev](https://github.com/mrapolonio-dev) - Translated skill to brazilian portuguese language
 
 
+### FOUNDERS BETA PROGRAM
