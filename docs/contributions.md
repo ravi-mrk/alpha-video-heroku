@@ -29,3 +29,42 @@ DavidS - Translated skill to French language
 [mrapolonio-dev](https://github.com/mrapolonio-dev) - Translated skill to brazilian portuguese language
 
 
+### FOUNDERS BETA PROGRAM
+
+Agam
+
+Ali.sabah1
+
+Asian Man
+
+BMO
+
+CaleB
+
+Danyu188
+
+Kazuke
+
+Lolestnoob
+
+Not Harry
+
+Patrickbs96
+
+Qree's 
+
+Shido
+
+Sid
+
+Soic
+
+TheSlayer575
+
+XxPlayerxXHDLP
+
+### Discord Mods
+
+Not Harry 
+
+PROPLUS_UPGRADE
