@@ -1,7 +1,7 @@
 ---
-id: unraid-os
+id: unraid
 title: Unraid
-sidebar_label: Unraid OS
+sidebar_label: Unraid
 ---
 
 import useBaseUrl from '@docusaurus/useBaseUrl';
