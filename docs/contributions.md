@@ -69,4 +69,4 @@ Not Harry
 
 PROPLUS_UPGRADE
 
-[clawizen](https://mariokartforthenintendowii.me)
+[Clawizen](https://mariokartforthenintendowii.me)
