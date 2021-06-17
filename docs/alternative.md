@@ -15,7 +15,7 @@ Due to this there is now a few other ways to install the skill.
 
 [Windows](https://alpha-video.andrewstech.me/docs/Windows) - Easy install for windows devices.
 
-[Unraid](https://alpha-video.andrewstech.me/docs/unraid-os) - Easy deployment to UnRaid
+[Unraid](https://alpha-video.andrewstech.me/docs/unraid) - Easy deployment to UnRaid
 
 [AWS](https://alpha-video.andrewstech.me/docs/aws) - Easy development to Amazon Web Services
 
