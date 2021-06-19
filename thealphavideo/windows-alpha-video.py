@@ -22,8 +22,7 @@ set_user('PRODUCTION')
 
 
 
-#start BST
-os.system('start start-bst.cmd')
+
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -272,7 +271,8 @@ def handle_query_intent(query):
 
     return question('noresult')
 
-
+#start BST
+os.system('start start-bst.cmd')
 app.run(host=host, port=port)
 
 # Made by andrewstech https://github.com/unofficial-skills/alpha-video/
