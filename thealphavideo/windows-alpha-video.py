@@ -112,14 +112,13 @@ class QueueManager(object):
 
     @property
     def status(self):
-        status = {
+        return {
             'Current Position': self.current_position,
             'Current URL': self.current,
             'Next URL': self.up_next,
             'Previous': self.previous,
             'History': list(self.history)
         }
-        return status
 
     @property
     def up_next(self):
