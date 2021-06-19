@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request, url_for, flash, redirect, Response, session
 from pygtail import Pygtail
+from PyQt5.Qt import *
+from PyQt5.QtWebEngineWidgets import *
+from PyQt5.QtWidgets import QApplication
 from flask_ask_alphavideo import Ask, question, statement, convert_errors, audio, current_stream
 from youtube_dl import YoutubeDL
 from werkzeug.exceptions import abort
