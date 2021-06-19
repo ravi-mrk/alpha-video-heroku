@@ -11,15 +11,18 @@ import sys
 import time
 from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
+import ui
 
-# version 1.5
+# version 1.8
 set_user('PRODUCTION')
+
+
 
 #start BST
 os.system('start start-bst.cmd')
 
 def get_db_connection():
-    conn = sqlite3.connect('/data/database.db')
+    conn = sqlite3.connect('database.db')
     conn.row_factory = sqlite3.Row
     return conn
 
@@ -96,10 +99,9 @@ def server_error_handler(error):
 def version():
     return '1.7'
 
-if app.config["PUBLIC"]:
-    import public
-else:
-    import pages 
+
+
+import pages 
 
 
 class QueueManager(object):
@@ -112,13 +114,14 @@ class QueueManager(object):
 
     @property
     def status(self):
-        return {
+        status = {
             'Current Position': self.current_position,
             'Current URL': self.current,
             'Next URL': self.up_next,
             'Previous': self.previous,
             'History': list(self.history)
         }
+        return status
 
     @property
     def up_next(self):
