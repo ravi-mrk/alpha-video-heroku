@@ -1,21 +1,25 @@
 from flask import Flask, render_template, request, url_for, flash, redirect, Response, session
 from pygtail import Pygtail
-from flask_ask_alphavideo import Ask, question, statement, convert_errors, audio
+from flask_ask_alphavideo import Ask, question, statement, convert_errors, audio, current_stream
 from youtube_dl import YoutubeDL
 from werkzeug.exceptions import abort
 import sqlite3
-import subprocess
 import logging
 import datetime
 import os
 import sys
 import time
-import sentry_sdk
-from flaskwebgui import FlaskUI
+from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
+#import ui
+# UI disabled due to bug
 
-#start BST
-os.system('start start-bst.cmd')
+# version 1.8
+set_user('PRODUCTION')
+
+
+
+
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
@@ -32,14 +36,16 @@ def get_post(post_id):
         abort(404)
     return post
 
-sentry_sdk.init(
-     dsn="https://d781c09d67f34a05b2b2d89193f4f2a0@o575799.ingest.sentry.io/5728581",
-     integrations=[FlaskIntegration()],
+
+def start():
+    sentry_sdk.init(
+        dsn="https://d781c09d67f34a05b2b2d89193f4f2a0@o575799.ingest.sentry.io/5728581",
+        integrations=[FlaskIntegration()],
         # Set traces_sample_rate to 1.0 to capture 100%
         # of transactions for performance monitoring.
         # We recommend adjusting this value in production.
-     traces_sample_rate=1.0
-)
+        traces_sample_rate=1.0
+    )
 
 
 ip = '0.0.0.0'  # System Ip
@@ -65,10 +71,10 @@ ytdl_options = {
 
 ytdl = YoutubeDL(ytdl_options)
 app = Flask(__name__)
-ui = FlaskUI(app, port=5000, width=600, height=500)
 app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", True)
 app.config["JSON_AS_ASCII"] = False
 app.config['SECRET_KEY'] = 'dev'
+app.config['PUBLIC']=os.environ.get("public", "False") == "True"
 app.config.from_mapping(
     BASE_URL="http://localhost:5000",
 )
@@ -85,118 +91,105 @@ def not_found_error(error):
 def not_found_error(error):
     return render_template('405.html'), 405
 
+@app.errorhandler(500)
+def server_error_handler(error):
+    return render_template("500.html", sentry_event_id=last_event_id()), 500
+
 @app.route('/version')
 def version():
     return '1.7'
 
-@app.route('/')
-def index():
-    return render_template('index.html')
 
 
-@app.route('/playlist')
-def playlist():
-    conn = get_db_connection()
-    posts = conn.execute('SELECT * FROM posts').fetchall()
-    conn.close()
-    return render_template('playlist.html', posts=posts)
+import pages 
 
 
-@app.route('/create', methods=('GET', 'POST'))
-def create():
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
+class QueueManager(object):
 
-        if not title:
-            flash('Title is required!')
-        else:
-            conn = get_db_connection()
-            conn.execute('INSERT INTO posts (title, content) VALUES (?, ?)',
-                         (title, content))
-            conn.commit()
-            conn.close()
-            return redirect(url_for('playlist'))
+    def __init__(self, urls):
+        self._urls = urls
+        self._queued = collections.deque(urls)
+        self._history = collections.deque()
+        self._current = None
 
-    return render_template('create.html')
+    @property
+    def status(self):
+        return {
+            'Current Position': self.current_position,
+            'Current URL': self.current,
+            'Next URL': self.up_next,
+            'Previous': self.previous,
+            'History': list(self.history)
+        }
 
+    @property
+    def up_next(self):
+        """Returns the url at the front of the queue"""
+        qcopy = copy(self._queued)
+        try:
+            return qcopy.popleft()
+        except IndexError:
+            return None
 
-@app.route('/<int:id>/delete', methods=('GET',))
-def delete(id):
-    post = get_post(id)
-    conn = get_db_connection()
-    conn.execute('DELETE FROM posts WHERE id = ?', (id,))
-    conn.commit()
-    conn.close()
-    flash('"{}" was successfully deleted!'.format(post['title']))
-    return redirect(url_for('playlist'))
+    @property
+    def current(self):
+        return self._current
 
+    @current.setter
+    def current(self, url):
+        self._save_to_history()
+        self._current = url
 
-@app.route('/<int:post_id>')
-def post(post_id):
-    post = get_post(post_id)
-    return render_template('post.html', post=post)
+    @property
+    def history(self):
+        return self._history
 
+    @property
+    def previous(self):
+        history = copy(self.history)
+        try:
+            return history.pop()
+        except IndexError:
+            return None
 
-@app.route('/<int:id>/edit', methods=('GET', 'POST'))
-def edit(id):
-    post = get_post(id)
+    def add(self, url):
+        self._urls.append(url)
+        self._queued.append(url)
 
-    if request.method == 'POST':
-        title = request.form['title']
-        content = request.form['content']
+    def extend(self, urls):
+        self._urls.extend(urls)
+        self._queued.extend(urls)
 
-        if not title:
-            flash('Title is required!')
-        else:
-            conn = get_db_connection()
-            conn.execute('UPDATE posts SET title = ?, content = ?'
-                         ' WHERE id = ?',
-                         (title, content, id))
-            conn.commit()
-            conn.close()
-            return redirect(url_for('playlist'))
+    def _save_to_history(self):
+        if self._current:
+            self._history.append(self._current)
 
-    return render_template('edit.html', post=post)
+    def end_current(self):
+        self._save_to_history()
+        self._current = None
 
+    def step(self):
+        self.end_current()
+        self._current = self._queued.popleft()
+        return self._current
 
-@app.route('/progress')
-def progress():
-    def generate():
-        x = 0
-        while x <= 100:
-            yield "data:" + str(x) + "\n\n"
-            x = x + 10
-            time.sleep(0.5)
+    def step_back(self):
+        self._queued.appendleft(self._current)
+        self._current = self._history.pop()
+        return self._current
 
-    return Response(generate(), mimetype='text/event-stream')
+    def reset(self):
+        self._queued = collections.deque(self._urls)
+        self._history = []
 
+    def start(self):
+        self.__init__(self._urls)
+        return self.step()
 
-@app.route('/log')
-def progress_log():
-    def generate():
-        for line in Pygtail(LOG_FILE, every_n=1):
-            yield "data:" + str(line) + "\n\n"
-            time.sleep(0.5)
-
-    return Response(generate(), mimetype='text/event-stream')
-
-
-@app.route('/env')
-def show_env():
-    log.info("route =>'/env' - hit")
-    env = {}
-    for k, v in request.environ.items():
-        env[k] = str(v)
-    log.info("route =>'/env' [env]:\n%s" % env)
-    return env
-
-
-@app.route("/logstream", methods=["GET"])
-def logstream():
-    return render_template('logs.html')
-
-
+    @property
+    def current_position(self):
+        return len(self._history) + 1
+    
 ask = Ask(app, '/api')
 
 
@@ -217,6 +210,8 @@ def handle_stop_intent():
     stop = render_template('stop')
     return statement(stop)
 
+def lambda_handler(event, _context):
+    return ask.run_aws_lambda(event)
 
 @ask.intent('AMAZON.CancelIntent')
 def handle_stop_intent():
@@ -273,41 +268,8 @@ def handle_query_intent(query):
 
     return question('noresult')
 
+#start BST
+os.system('start start-bst.cmd')
+app.run(host=host, port=port)
 
-@ask.on_playback_finished()
-def play_back_finished():
-    search_results = session.attributes.get(search_results)
-    result = search_results[1]
-    song_name = result['title']
-    channel_name = result['uploader']
-
-    for format_ in result['formats']:
-        if format_['ext'] == 'm4a':
-            mp3_url = format_['url']
-            playing = render_template('playing', song_name=song_name, channel_name=channel_name)
-            return audio(playing).play(mp3_url)
-
-    return question('noresult')
-
-
-@ask.intent('AMAZON.NextIntent')
-def next_song():
-    search_results = session.attributes.get(search_results)
-    result = search_results[1]
-    song_name = result['title']
-    channel_name = result['uploader']
-
-    for format_ in result['formats']:
-        if format_['ext'] == 'm4a':
-            mp3_url = format_['url']
-            playing = render_template('playing', song_name=song_name, channel_name=channel_name)
-            return audio(playing).play(mp3_url)
-
-    return question('noresult')
-
-
-
-if __name__ == "__main__":
-    # app.run() for debug
-    ui.run()
 # Made by andrewstech https://github.com/unofficial-skills/alpha-video/
