@@ -14,7 +14,8 @@ import sys
 import time
 from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
-import ui
+#import ui
+# UI disabled due to bug
 
 # version 1.8
 set_user('PRODUCTION')
