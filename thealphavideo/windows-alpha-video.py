@@ -14,8 +14,8 @@ import sentry_sdk
 from flaskwebgui import FlaskUI
 from sentry_sdk.integrations.flask import FlaskIntegration
 
-
-
+#start BST
+os.system('start start-bst.cmd')
 
 def get_db_connection():
     conn = sqlite3.connect('database.db')
