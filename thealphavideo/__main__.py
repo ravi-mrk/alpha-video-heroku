@@ -94,7 +94,7 @@ def version():
     return '1.7'
 
 @app.route('/api')
-def index():
+def alexafunction():
     return render_template('api.html')
 
 if app.config["PUBLIC"]:
