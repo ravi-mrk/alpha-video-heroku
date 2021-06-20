@@ -268,7 +268,100 @@ def handle_query_intent(query):
 
     return question('noresult')
 
+@ask.intent('playlist')
+def start_playlist():
+    speech = 'Heres a playlist of some sounds. You can ask me Next, Previous, or Start Over'
+    stream_url = queue.start()
+    yt = YouTube(stream_url)
+    print(yt.streams.all()[0].url)
+    return audio(speech).play(yt.streams.all()[0].url)
 
+
+
+
+# QueueManager object is not stepped forward here.
+# This allows for Next Intents and on_playback_finished requests to trigger the step
+@ask.on_playback_nearly_finished()
+def nearly_finished():
+    if queue.up_next:
+        _infodump('Alexa is now ready for a Next or Previous Intent')
+        # dump_stream_info()
+        next_stream_render = queue.up_next
+        yt = YouTube(next_stream_render)
+        print(yt.streams.all()[0].url)
+        next_stream = yt.streams.all()[0].url
+        _infodump('Enqueueing {}'.format(next_stream))
+        return audio().enqueue(next_stream)
+    else:
+        _infodump('Nearly finished with last song in playlist')
+
+
+@ask.on_playback_finished()
+def play_back_finished():
+    _infodump('Finished Audio stream for track {}'.format(queue.current_position))
+    if queue.up_next:
+        queue.step()
+        _infodump('stepped queue forward')
+        dump_stream_info()
+    else:
+        return statement('You have reached the end of the playlist!')
+
+
+# NextIntent steps queue forward and clears enqueued streams that were already sent to Alexa
+# next_stream will match queue.up_next and enqueue Alexa with the correct subsequent stream.
+@ask.intent('AMAZON.NextIntent')
+def next_song():
+    if queue.up_next:
+        speech = 'playing next queued song'
+        next_stream_render = queue.step()
+        yt = YouTube(next_stream_render)
+        print(yt.streams.all()[0].url)
+        next_stream = yt.streams.all()[0].url
+        _infodump('Stepped queue forward to {}'.format(next_stream))
+        dump_stream_info()
+        return audio(speech).play(next_stream)
+    else:
+        return audio('There are no more songs in the queue')
+
+
+@ask.intent('AMAZON.PreviousIntent')
+def previous_song():
+    if queue.previous:
+        speech = 'playing previously played song'
+        prev_stream_render = queue.step_back()
+        yt = YouTube(prev_stream_render)
+        print(yt.streams.all()[0].url)
+        prev_stream = yt.streams.all()[0].url
+        dump_stream_info()
+        return audio(speech).play(prev_stream)
+
+    else:
+        return audio('There are no songs in your playlist history.')
+
+
+@ask.intent('AMAZON.StartOverIntent')
+def restart_track():
+    if queue.current:
+        speech = 'Restarting current track'
+        dump_stream_info()
+        return audio(speech).play(queue.current, offset=0)
+    else:
+        return statement('There is no current song')
+
+
+
+def dump_stream_info():
+    status = {
+        'Current Stream Status': current_stream.__dict__,
+        'Queue status': queue.status
+    }
+    _infodump(status)
+
+
+def _infodump(obj, indent=2):
+    msg = json.dumps(obj, indent=indent)
+    logger.info(msg)
+    
 app.run(host=host, port=port)
 
 # Made by andrewstech https://github.com/unofficial-skills/alpha-video/
