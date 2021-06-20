@@ -93,6 +93,10 @@ def server_error_handler(error):
 def version():
     return '1.7'
 
+@app.route('/api')
+def index():
+    return render_template('api.html')
+
 if app.config["PUBLIC"]:
     import public
 else:
