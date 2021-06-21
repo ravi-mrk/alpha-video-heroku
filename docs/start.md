@@ -18,7 +18,7 @@ DE: ``` https://admiring-orwell-ewope7.bespoken.link/api ```
 Hosted by [Kippenhof](https://github.com/Kippenhof)
 
 
-UK: ``` https://deep-zander-ivkizb.bespoken.link/api ``` 
+UK: ``` https://trusting-lovecraft-LKYahg.bespoken.link/api ``` 
 Hosted by [AndrewsTech](https://github.com/andrewstech)
 
 
