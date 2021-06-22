@@ -4,16 +4,16 @@ import os
 from copy import copy
 from youtube_dl import YoutubeDL
 from pytube import *
-from flask import Flask, json, render_template
-from flask_ask_alphavideo import Ask, question, statement, audio, current_stream, logger
+from flask import Flask, json, render_template, session
+from flask_ask_alphavideo import Ask, question, statement, audio, current_stream, logger, convert_errors
 from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
 from pygtail import Pygtail
 import sqlite3
 
-
 # version 1.8
 set_user('PRODUCTION')
+
 
 def get_db_connection():
     conn = sqlite3.connect('/data/database.db')
@@ -69,7 +69,7 @@ app = Flask(__name__)
 app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", True)
 app.config["JSON_AS_ASCII"] = False
 app.config['SECRET_KEY'] = 'dev'
-app.config['PUBLIC']=os.environ.get("public", "False") == "True"
+app.config['PUBLIC'] = os.environ.get("public", "False") == "True"
 app.config.from_mapping(
     BASE_URL="http://localhost:5000",
 )
@@ -86,38 +86,41 @@ def not_found_error(error):
 def not_found_error(error):
     return render_template('405.html'), 405
 
+
 @app.errorhandler(500)
 def server_error_handler(error):
     return render_template("500.html", sentry_event_id=last_event_id()), 500
 
+
 @app.route('/version')
 def version():
-    return '1.8'
+    return '1.8/pre'
+
 
 @app.route('/api')
 def alexafunction():
     return render_template('api.html')
 
+
 if app.config["PUBLIC"]:
     import public
 else:
-    import pages 
-    
+    import pages
 
-
-ask = Ask(app, "/")
+ask = Ask(app, "/api")
 logging.getLogger('flask_ask').setLevel(logging.INFO)
 
 p = Playlist('https://www.youtube.com/playlist?list=PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj')
 
 playlist = p.video_urls
 
-@app.route('/')
-def index():
+
+@app.route('/api')
+def api():
     return render_template('api.html')
 
+
 class QueueManager(object):
-    
 
     def __init__(self, urls):
         self._urls = urls
@@ -214,6 +217,7 @@ def launch():
     question_text = render_template('welcome')
     return question(question_text).simple_card(card_title, question_text)
 
+
 @ask.intent('PlayList')
 def start_playlist():
     speech = 'Heres a playlist of some sounds. You can ask me Next, Previous, or Start Over'
@@ -247,6 +251,7 @@ def handle_query_intent(query):
             return audio(playing).play(mp3_url)
 
     return question('noresult')
+
 
 # QueueManager object is not stepped forward here.
 # This allows for Next Intents and on_playback_finished requests to trigger the step
@@ -328,6 +333,7 @@ def started(offset, token, url):
 def stopped(offset, token):
     _infodump('Stopped audio stream for track {}'.format(queue.current_position))
 
+
 @ask.intent('AMAZON.PauseIntent')
 def pause():
     seconds = current_stream.offsetInMilliseconds / 1000
@@ -350,6 +356,7 @@ def resume():
 @ask.session_ended
 def session_ended():
     return "{}", 200
+
 
 def dump_stream_info():
     status = {
