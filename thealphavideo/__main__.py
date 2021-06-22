@@ -9,6 +9,9 @@ from flask_ask_alphavideo import Ask, question, statement, audio, current_stream
 from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
 from youtube_dl import YoutubeDL
+from pygtail import Pygtail
+import sqlite3
+
 
 # version 1.8
 set_user('PRODUCTION')
