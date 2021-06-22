@@ -8,7 +8,6 @@ from flask import Flask, json, render_template
 from flask_ask_alphavideo import Ask, question, statement, audio, current_stream, logger
 from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
-from youtube_dl import YoutubeDL
 from pygtail import Pygtail
 import sqlite3
 
@@ -93,7 +92,7 @@ def server_error_handler(error):
 
 @app.route('/version')
 def version():
-    return '1.7'
+    return '1.8'
 
 @app.route('/api')
 def alexafunction():
