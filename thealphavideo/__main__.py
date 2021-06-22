@@ -1,18 +1,16 @@
-from flask import Flask, render_template, request, url_for, flash, redirect, Response, session
-from pygtail import Pygtail
-from flask_ask_alphavideo import Ask, question, statement, convert_errors, audio, current_stream
-from youtube_dl import YoutubeDL
-from werkzeug.exceptions import abort
-import sqlite3
+import collections
 import logging
-import datetime
 import os
-import sys
-import time
+from copy import copy
+from youtube_dl import YoutubeDL
+from pytube import *
+from flask import Flask, json, render_template
+from flask_ask_alphavideo import Ask, question, statement, audio, current_stream, logger
 from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
+from youtube_dl import YoutubeDL
 
-# version 1.5
+# version 1.8
 set_user('PRODUCTION')
 
 def get_db_connection():
@@ -64,6 +62,7 @@ ytdl_options = {
 }
 
 ytdl = YoutubeDL(ytdl_options)
+
 app = Flask(__name__)
 app.config["DEBUG"] = os.environ.get("FLASK_DEBUG", True)
 app.config["JSON_AS_ASCII"] = False
@@ -101,9 +100,22 @@ if app.config["PUBLIC"]:
     import public
 else:
     import pages 
+    
 
+
+ask = Ask(app, "/")
+logging.getLogger('flask_ask').setLevel(logging.INFO)
+
+p = Playlist('https://www.youtube.com/playlist?list=PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj')
+
+playlist = p.video_urls
+
+@app.route('/')
+def index():
+    return render_template('api.html')
 
 class QueueManager(object):
+    
 
     def __init__(self, urls):
         self._urls = urls
@@ -189,8 +201,9 @@ class QueueManager(object):
     @property
     def current_position(self):
         return len(self._history) + 1
-    
-ask = Ask(app, '/api')
+
+
+queue = QueueManager(playlist)
 
 
 @ask.launch
@@ -198,49 +211,6 @@ def launch():
     card_title = render_template('card_title')
     question_text = render_template('welcome')
     return question(question_text).simple_card(card_title, question_text)
-
-
-@ask.session_ended
-def session_ended():
-    return "{}", 200
-
-
-@ask.intent('AMAZON.StopIntent')
-def handle_stop_intent():
-    stop = render_template('stop')
-    return statement(stop)
-
-def lambda_handler(event, _context):
-    return ask.run_aws_lambda(event)
-
-@ask.intent('AMAZON.CancelIntent')
-def handle_stop_intent():
-    stop = render_template('stop')
-    return statement(stop)
-
-
-@ask.intent('AMAZON.PauseIntent')
-def handle_pause_intent():
-    pause = render_template('pause')
-    return audio(pause).stop()
-
-
-@ask.intent('AMAZON.ResumeIntent')
-def resume():
-    resume = render_template('resume')
-    return audio(resume).resume()
-
-
-@ask.intent('AMAZON.FallbackIntent')
-def handle_fallback_intent():
-    fallback = render_template('fallback')
-    return question(fallback)
-
-
-@ask.intent('AMAZON.HelpIntent')
-def handle_help_intent():
-    fallback = render_template('fallback')
-    return question(fallback)
 
 
 @ask.intent('QueryIntent', mapping={'query': 'Query'})
@@ -267,17 +237,6 @@ def handle_query_intent(query):
             return audio(playing).play(mp3_url)
 
     return question('noresult')
-
-@ask.intent('playlist')
-def start_playlist():
-    speech = 'Heres a playlist of some sounds. You can ask me Next, Previous, or Start Over'
-    stream_url = queue.start()
-    yt = YouTube(stream_url)
-    print(yt.streams.all()[0].url)
-    return audio(speech).play(yt.streams.all()[0].url)
-
-
-
 
 # QueueManager object is not stepped forward here.
 # This allows for Next Intents and on_playback_finished requests to trigger the step
@@ -349,6 +308,38 @@ def restart_track():
         return statement('There is no current song')
 
 
+@ask.on_playback_started()
+def started(offset, token, url):
+    _infodump('Started audio stream for track {}'.format(queue.current_position))
+    dump_stream_info()
+
+
+@ask.on_playback_stopped()
+def stopped(offset, token):
+    _infodump('Stopped audio stream for track {}'.format(queue.current_position))
+
+@ask.intent('AMAZON.PauseIntent')
+def pause():
+    seconds = current_stream.offsetInMilliseconds / 1000
+    msg = 'Paused the Playlist on track {}, offset at {} seconds'.format(
+        queue.current_position, seconds)
+    _infodump(msg)
+    dump_stream_info()
+    return audio(msg).stop().simple_card(msg)
+
+
+@ask.intent('AMAZON.ResumeIntent')
+def resume():
+    seconds = current_stream.offsetInMilliseconds / 1000
+    msg = 'Resuming the Playlist on track {}, offset at {} seconds'.format(queue.current_position, seconds)
+    _infodump(msg)
+    dump_stream_info()
+    return audio(msg).resume().simple_card(msg)
+
+
+@ask.session_ended
+def session_ended():
+    return "{}", 200
 
 def dump_stream_info():
     status = {
@@ -361,7 +352,7 @@ def dump_stream_info():
 def _infodump(obj, indent=2):
     msg = json.dumps(obj, indent=indent)
     logger.info(msg)
-    
-app.run(host=host, port=port)
 
-# Made by andrewstech https://github.com/unofficial-skills/alpha-video/
+
+if __name__ == '__main__':
+    app.run(debug=True)
