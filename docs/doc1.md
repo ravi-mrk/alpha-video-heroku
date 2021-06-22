@@ -24,3 +24,21 @@ If you would like to help fund projects like this then please click the donate b
 
 [![WINDOWS BUILD](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml/badge.svg)](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml)
 
+
+### Changelog
+
+## 1.8.0-pre - 2021-06-22
+- Prerelease of playlist function
+- Full rewrite of skill
+
+## 1.5.3 - 2021-06-02
+- Bug Fix
+
+## 1.5 - 2021-05-29
+-swaped localtuunel for Bespoken proxy
+
+## 1.1 - 2021-05-03
+- Added more languages.
+
+## 1.0 - 2021-04-25
+- Add Alpha-Video to Hassio
