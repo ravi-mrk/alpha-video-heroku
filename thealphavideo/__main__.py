@@ -215,6 +215,14 @@ def launch():
     question_text = render_template('welcome')
     return question(question_text).simple_card(card_title, question_text)
 
+@ask.intent('PlayList')
+def start_playlist():
+    speech = 'Heres a playlist of some sounds. You can ask me Next, Previous, or Start Over'
+    stream_url = queue.start()
+    yt = YouTube(stream_url)
+    print(yt.streams.all()[0].url)
+    return audio(speech).play(yt.streams.all()[0].url)
+
 
 @ask.intent('QueryIntent', mapping={'query': 'Query'})
 def handle_query_intent(query):
