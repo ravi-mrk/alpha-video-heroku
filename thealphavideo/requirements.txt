@@ -6,5 +6,4 @@ youtube_dl
 pygtail
 pyfiglet
 Flask-Ask-alphavideo
-PyQt5
-PyQtWebEngine
+pytube
