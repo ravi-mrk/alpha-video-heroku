@@ -1,7 +1,7 @@
 ---
 id: start
-title: Before you start
-sidebar_label: Before you start
+title: Antes de que empieces
+sidebar_label: Antes de que empieces
 slug: /start
 ---
 
