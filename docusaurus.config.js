@@ -103,12 +103,14 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          editLocalizedFiles: true,
           // Please change this to your repo.
           editUrl:
             'https://github.com/unofficial-skills/alpha-video/edit/setup',
         },
         blog: {
           showReadingTime: true,
+          editLocalizedFiles: true,
           // Please change this to your repo.
           editUrl:
             'https://github.com/unofficial-skills/alpha-video/edit/setup',
