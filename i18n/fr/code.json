@@ -1,16 +1,16 @@
 {
   "Alpha Video": {
-    "message": "Alpha Videwo"
+    "message": "Alpha Video"
   },
   "Youtube on Alexa": {
-    "message": "Youtube on Alexa"
+    "message": "Youtube au Alexa"
   },
   "Powered by Python": {
-    "message": "Powered by Python",
+    "message": "Alimenté par Python",
     "description": "Powered by Python"
   },
   "The App is Written in Python Version 3.7 .": {
-    "message": "The App is Written in Python Version 3.7 ."
+    "message": "L'application est écrite dans Python Version 3.7 ."
   },
   "theme.NotFound.title": {
     "message": "Page introuvable",
