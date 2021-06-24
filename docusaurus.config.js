@@ -6,6 +6,10 @@ module.exports = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+  },
   organizationName: 'unofficial-skills', // Usually your GitHub org/user name.
   projectName: 'alpha-video', // Usually your repo name.
   themeConfig: {
@@ -32,6 +36,10 @@ module.exports = {
           href: 'https://github.com/unofficial-skills/alpha-video',
           label: 'GitHub',
           position: 'right',
+        },
+        {
+          type: 'localeDropdown',
+          position: 'left',
         },
       ],
     },
