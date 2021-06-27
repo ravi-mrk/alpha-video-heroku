@@ -7,16 +7,16 @@ slug: /alternative
 Many people use different CPU architectures or different operating systems.
 Due to this there is now a few other ways to install the skill.
 
-[DOCKER](https://alpha-video.andrewstech.me/docs/doc2) - Standard install
+[DOCKER](doc2.md) - Standard install
 
-[Hassio/Homeassistant OS](https://alpha-video.andrewstech.me/docs/home-assistant-os) - Available as plugins
+[Hassio/Homeassistant OS](home-assistant-os.md) - Available as plugins
 
-[Balena Cloud](https://alpha-video.andrewstech.me/docs/balena) - A local cloud deployment 
+[Balena Cloud](balena.md) - A local cloud deployment 
 
-[Windows](https://alpha-video.andrewstech.me/docs/Windows) - Easy install for windows devices.
+[Windows](windows.md) - Easy install for windows devices.
 
-[Unraid](https://alpha-video.andrewstech.me/docs/unraid) - Easy deployment to UnRaid
+[Unraid](unraid-os.md) - Easy deployment to UnRaid
 
-[AWS](https://alpha-video.andrewstech.me/docs/aws) - Easy development to Amazon Web Services
+[AWS](aws.md) - Easy development to Amazon Web Services
 
-[Heroku](https://alpha-video.andrewstech.me/docs/heroku) - Easy development to heroku
+[Heroku](heroku.md) - Easy development to heroku
