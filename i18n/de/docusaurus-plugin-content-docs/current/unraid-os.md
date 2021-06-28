@@ -12,16 +12,16 @@ Um Alpha-Video auf Unraid zu installieren, benötigt ihr die Community-Applicati
 * Sucht nach Alpha-Video in der Suche des "Apps" Tabs.
 * Wählt die Version von Kippenhof aus und clickt den Download-Pfeil.
 
-In dem Template findet ihr 1 Variable, 1 Port und einen Path.
+In dem Template findet ihr 1 Variable, 1 Port und einen Pfad.
 
-* unter dem Angegebenen Port könnt ihr die Seite der App zu Testzwecken oder beim nutzen [eines Reverse-Proxys und einer Custom domein](## Nutzen einer eigenen Subdomain) erreichen. sonst ist dieser Egal, da die App den Service [bespoken](https://bespoken.io) nutzt.
+* unter dem Angegebenen Port könnt ihr die Seite der App zu Testzwecken oder beim nutzen [eines Reverse-Proxys und einer Custom domein](##-nutzen-einer-eigenen-subdomain) erreichen. sonst ist dieser Egal, da die App den Service [bespoken](https://bespoken.io) nutzt.
 
 
 * Falls ihr bespoken nutzen wollt, wird die Subdomain im Log des Containers angezeigt.
 
 * unter dem eingegebenem Pfad wird die Config von [bespoken](https://bespoken.io) gespeichert, um die URL zu behalten.
 
-Wenn ihr fertig seid drückt "Apply" und setzt die Anleitung [hier](https://alpha-video.andrewstech.me/docs/doc4) fort.
+Wenn ihr fertig seid drückt "Apply" und setzt die Anleitung [hier](doc4.md) fort.
 
 ## Nutzen einer eigenen Subdomain
 
@@ -80,7 +80,7 @@ TODO: Adding HAProxy & Traefik
 
 
 
-Wenn ihr fertig setzt die Anleitung [hier](https://alpha-video.andrewstech.me/docs/doc4) fort.
+Wenn ihr fertig setzt die Anleitung [hier](doc4.md) fort.
 
 
 
