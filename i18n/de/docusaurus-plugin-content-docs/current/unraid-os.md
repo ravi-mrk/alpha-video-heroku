@@ -7,27 +7,28 @@ sidebar_label: Unraid
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
 
-To install Alpha-Video on your Unraid machine you need to open the Apps-Tab which you can access if you have Community-Applications (CA) installed.
+Um Alpha-Video auf Unraid zu installieren, benötigt ihr die Community-Applications (CA) App, welche ihr [hier](https://forums.unraid.net/topic/38582-plug-in-community-applications/) bekommt.
 
-* Enter in the Search Alpha-Video to find the Application.
-* Select the Image by Kippenhof and Press Download.
+* Sucht nach Alpha-Video in der Suche des "Apps" Tabs.
+* Wählt die Version von Kippenhof aus und clickt den Download-Pfeil.
 
-In the Template you will find 1 Variable, 1 Port and one Path.
+In dem Template findet ihr 1 Variable, 1 Port und einen Pfad.
 
-* The Port you configure doesn't matter, since the App is using the Service [bespoken](https://bespoken.io).
-
-
-* The Subdomain will be printed out in the Container-Console.
-
-* The Path is needed to save the Configuration of [bespoken](https://bespoken.io) to save the generated url.
+* unter dem Angegebenen Port könnt ihr die Seite der App zu Testzwecken oder beim nutzen [eines Reverse-Proxys und einer Custom domein](#nutzen-einer-eigenen-subdomain) erreichen. sonst ist dieser Egal, da die App den Service [bespoken](https://bespoken.io) nutzt.
 
 
-## Running over your Own Subdomain
+* Falls ihr bespoken nutzen wollt, wird die Subdomain im Log des Containers angezeigt.
+
+* unter dem eingegebenem Pfad wird die Config von [bespoken](https://bespoken.io) gespeichert, um die URL zu behalten.
+
+Wenn ihr fertig seid drückt "Apply" und setzt die Anleitung [hier](doc4.md) fort.
+
+## Nutzen einer eigenen Subdomain
 
 
-To run the Application over your own Domain, you need an Reverse-Proxy on Port 443 with SSL Cerrtificates.
+Um die Anwendung über eine eigene Domain zu betreiben, benötigt ihr einen Reverse-Proxy auf Port 443 mit  SSL Zertifikaten für eure Domain.
 
-If you just want it to work, here are some Template-Configurations:
+Wenn ihr es einfach zu laufen bekommen wollt, könnt ihr diese Endpoint-Config gerne als Vorlage nutzen und eure Werte eintragen:
 
 
 ### Nginx
@@ -63,21 +64,23 @@ server {
 ```
 ### Nginx Proxy Manager
 
-In Nginx Proxy Manager click the Hosts button and choose proxy hosts from the dropdown. When the page loads up click Add a proxy Host.
+In Nginx Proxy Manager clickt einfach den "Hosts" button und wählt proxy hosts im dropdown-menü aus. Wenn die Seite geladen ist clickt  "Add a proxy Host".
 
-A new window will popup as shown below. Put your domain or subdomain in the domain box. Make sure the Scheme is set to http and the Foward hostname/Ip is the IP for your system running alpha-video. Set the port to 5000. Finally make sure websocket support is on.
+In einem neuen Fenster wird das Popup wie unten gezeigt. Tragt eure Domain oder Subdomain in die Domain-Box ein. Stellt sicher, dass das Scheme auf http und Foward hostname/Ip is die IP der laufenden alpha-video instanz. Setzt den Port auf 5000 oder den im Template ausgewählten. Stellt ebenfalls sicher, dass die Websockets aktiviert sind.
 
 <img alt="ports" src={useBaseUrl('/img/port-photo.PNG')} />
 
-Now click the SSL tab and choose Request new certificate and force SSL. Enter your email in the email for let's encrypt box and tick the agree box. Now click save and it should be done and working. An example is shown bellow.
+Nun klickt den SSL tab und wält new certificate und force SSL. Wählt nun eine E-Mail für das Zertifikat und akzeptiert die Box. Nun Drückt auf Save, und es sollte alles Korrekt funktionieren. Hier ein Beispiel:
 
 <img alt="ssl" src={useBaseUrl('/img/ssl.PNG')} />
+
+(Falls es nicht Funktioniert, probiert einen Neustart des Containers)
 
 TODO: Adding HAProxy & Traefik
 
 
 
-After you are done with the Configuration you can hit "Apply" and Continue [HERE](https://alpha-video.andrewstech.me/docs/doc4)
+Wenn ihr fertig setzt die Anleitung [hier](doc4.md) fort.
 
 
 
