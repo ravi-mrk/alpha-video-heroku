@@ -14,7 +14,7 @@ Um Alpha-Video auf Unraid zu installieren, benötigt ihr die Community-Applicati
 
 In dem Template findet ihr 1 Variable, 1 Port und einen Pfad.
 
-* unter dem Angegebenen Port könnt ihr die Seite der App zu Testzwecken oder beim nutzen [eines Reverse-Proxys und einer Custom domein](##-nutzen-einer-eigenen-subdomain) erreichen. sonst ist dieser Egal, da die App den Service [bespoken](https://bespoken.io) nutzt.
+* unter dem Angegebenen Port könnt ihr die Seite der App zu Testzwecken oder beim nutzen [eines Reverse-Proxys und einer Custom domein](#nutzen-einer-eigenen-subdomain) erreichen. sonst ist dieser Egal, da die App den Service [bespoken](https://bespoken.io) nutzt.
 
 
 * Falls ihr bespoken nutzen wollt, wird die Subdomain im Log des Containers angezeigt.
