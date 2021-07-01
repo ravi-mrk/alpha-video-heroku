@@ -22,6 +22,10 @@ module.exports = {
       // Optional fields.
       anonymizeIP: false, // Should IPs be anonymized?
       },
+    algolia: {
+      apiKey: 'd62d1c5918ea1492fbae354110c2cfed',
+      indexName: 'andrewstech',
+      },
     navbar: {
       title: 'ALPHA-VIDEO',
       logo: {
