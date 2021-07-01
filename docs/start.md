@@ -27,7 +27,7 @@ If you wish to add your own Endpoint to the program then visit the get Involved 
 
 ## Netlify
 
-This website is hosted for free by [Netlify](netlify.com)
+This website is hosted for free by [Netlify](https://netlify.com)
 
 The source for these docs are Hosted alongside the project files on github.
 
