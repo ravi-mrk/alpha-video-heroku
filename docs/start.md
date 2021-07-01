@@ -8,6 +8,11 @@ slug: /start
 Hi this project is fully open source if you wish to help out then please do.
 Also if you believe a section of the docs could be improved then click the edit button at the bottom of the page.
 
+
+:::Legal disclaimer 
+THIS SKILL IS A COMMUNITY PROJECT AND IS NOT MENT TO REPRESENT GOOGLE OR YOUTUBE.
+:::
+
 ## Community Host Program
 
 The Community Host Program allows users to share their Endpoints for the skill for others to use. If you don't have any options or Ressources to Host the Application yourself, you can copy the URL closest to you and continue [HERE](doc4.md)
