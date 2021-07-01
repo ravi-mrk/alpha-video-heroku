@@ -10,7 +10,7 @@ Also if you believe a section of the docs could be improved then click the edit 
 
 ## Community Host Program
 
-The Community Host Program allows users to share their Endpoints for the skill for others to use.
+The Community Host Program allows users to share their Endpoints for the skill for others to use. If you don't have any options or Ressources to Host the Application yourself, you can copy the URL closest to you and continue [HERE](doc4.md)
 
 Current Endpoints:
 
