@@ -25,6 +25,14 @@ Hosted by [AndrewsTech](https://github.com/andrewstech)
 
 If you wish to add your own Endpoint to the program then visit the get Involved channel on our discord server.
 
+## Netlify
+
+This website is hosted for free by [Netlify](netlify.com)
+
+The source for these docs are Hosted alongside the project files on github.
+
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/735370e5-7a69-4664-923b-ad7af1977ce9/deploy-status)](https://app.netlify.com/sites/alpha-video-docs/deploys)
 
 
 
