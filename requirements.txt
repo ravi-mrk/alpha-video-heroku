@@ -3,7 +3,7 @@ Flask==1.1.1
 PyYAML==5.4.1
 six==1.11.0
 Werkzeug==0.16.1
-youtube_dl
+youtube_dl==2021.6.6
 pygtail
 pyfiglet
 Flask-Ask-alphavideo
