@@ -109,6 +109,8 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
           editUrl: ({locale, versionDocsDirPath, docPath}) => {
             // Link to Crowdin for French docs
             if (locale !== DefaultLocale) {
