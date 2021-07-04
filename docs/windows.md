@@ -4,8 +4,10 @@ title: Windows
 sidebar_label: Windows
 ---
 
-:::tip 
+:::tip
+ 
 Google Chrome is required as a dependency.
+
 :::
 
 Alpha-Video now has native support for windows.
