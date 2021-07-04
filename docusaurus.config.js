@@ -108,11 +108,15 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editLocalizedFiles: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/unofficial-skills/alpha-video/edit/setup',
-        },
+          editUrl: ({locale, docPath}) => {
+            // Link to Crowdin for French docs
+            if (locale !== DefaultLocale) {
+              return `https://translate.andrewstech.me/project/alpha-video/${locale}`;
+            }
+            // Link to Github for English docs
+            return `https://github.com/unofficial-skills/alpha-video/edit/setup/${docPath}`;
+          },
+        },    
         blog: {
           showReadingTime: true,
           editLocalizedFiles: true,
