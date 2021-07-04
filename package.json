@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@crowdin/cli": "3",
+    "netlify-plugin-cache": "1.0.3",
     "@docusaurus/core": "2.0.0-beta.2",
     "@docusaurus/preset-classic": "2.0.0-beta.2",
     "@docusaurus/theme-search-algolia": "^2.0.0-beta.3",
