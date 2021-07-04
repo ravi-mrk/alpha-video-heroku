@@ -1,5 +1,5 @@
 [build]
-  command = "npm run build"
+  command = "npm run crowdin:sync && npm run build"
   publish = "build"
 
 [[redirects]]
