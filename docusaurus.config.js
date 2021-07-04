@@ -1,5 +1,6 @@
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const DefaultLocale = 'en';
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
@@ -108,20 +109,22 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editLocalizedFiles: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/unofficial-skills/alpha-video/edit/setup',
+          editUrl: ({locale, versionDocsDirPath, docPath}) => {
+            // Link to Crowdin for French docs
+            if (locale !== DefaultLocale) {
+              return `https://translate.andrewstech.me/project/alpha-video/${locale}`;
+            }
+            // Link to Github for English docs
+            return `https://github.com/unofficial-skills/alpha-video/edit/setup/${versionDocsDirPath}/${docPath}`;
+          },
         },
         blog: {
-          showReadingTime: true,
-          editLocalizedFiles: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/unofficial-skills/alpha-video/edit/setup',
-        },
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          editUrl: ({locale, blogDirPath, blogPath}) => {
+            if (locale !== DefaultLocale) {
+              return `https://translate.andrewstech.me/project/alpha-video/${locale}`;
+            }
+            return `https://github.com/unofficial-skills/alpha-video/edit/setup/${blogDirPath}/${blogPath}`;
+          },
         },
       },
     ],
