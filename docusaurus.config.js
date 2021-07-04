@@ -108,6 +108,7 @@ module.exports = {
       '@docusaurus/preset-classic',
       {
         docs: {
+          sidebarPath: require.resolve('./sidebars.js'),
           editUrl: ({locale, versionDocsDirPath, docPath}) => {
             // Link to Crowdin for French docs
             if (locale !== DefaultLocale) {
