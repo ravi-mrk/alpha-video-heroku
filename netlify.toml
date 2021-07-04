@@ -1,3 +1,7 @@
+[context.deploy-preview]
+  command = "npm run crowdin download && npm run build"
+  publish = "build"
+
 [build]
   command = "npm run crowdin:sync && npm run build"
   publish = "build"
