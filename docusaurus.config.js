@@ -26,7 +26,7 @@ module.exports = {
     algolia: {
       apiKey: 'd62d1c5918ea1492fbae354110c2cfed',
       indexName: 'andrewstech',
-      contextualSearch: false,
+      contextualSearch: true,
       searchParameters: { 'facetFilters': ["type:content"]}
       },
     navbar: {
