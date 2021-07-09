@@ -5,7 +5,7 @@ const DefaultLocale = 'en';
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'ALPHA VIDEO',
-  scripts: [{src="https://cdn.ywxi.net/js/1.js" async}],
+  scripts: [{src: 'https://cdn.ywxi.net/js/1.js', async: true}],
   tagline: 'Youtube on Alexa',
   url: 'https://alpha-video.andrewstech.me',
   baseUrl: '/',
