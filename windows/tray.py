@@ -13,15 +13,15 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
         menu = QtWidgets.QMenu(parent)
         open_app = menu.addAction("Open UI")
         open_app.triggered.connect(self.open_ui)
-        open_app.setIcon(QtGui.QIcon("icon.png"))
+        open_app.setIcon(QtGui.QIcon("logo.ico"))
 
         open_bst = menu.addAction("Start BST")
         open_bst.triggered.connect(self.open_bst_l)
-        open_bst.setIcon(QtGui.QIcon("icon.png"))
+        open_bst.setIcon(QtGui.QIcon("logo.ico"))
 
         exit_ = menu.addAction("Exit")
         exit_.triggered.connect(lambda: sys.exit())
-        exit_.setIcon(QtGui.QIcon("icon.png"))
+        exit_.setIcon(QtGui.QIcon("logo.ico"))
 
         menu.addSeparator()
         self.setContextMenu(menu)
@@ -46,7 +46,7 @@ class SystemTrayIcon(QtWidgets.QSystemTrayIcon):
 def main():
     apps = QtWidgets.QApplication(sys.argv)
     w = QtWidgets.QWidget()
-    tray_icon = SystemTrayIcon(QtGui.QIcon("icon.png"), w)
+    tray_icon = SystemTrayIcon(QtGui.QIcon("logo.ico"), w)
     tray_icon.show()
     tray_icon.showMessage('Alpha Video', 'has started')
     sys.exit(apps.exec_())
