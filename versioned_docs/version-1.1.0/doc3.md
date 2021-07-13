@@ -9,7 +9,7 @@ Once Docker is fully installed and running. Open a terminal on your device and t
 ``` docker volume create alpha-video ```
 
 
-``` docker run -d --restart unless-stopped --name alpha-video -v alpha-video:/data -p 5000:5000 -p 9001:9001 andrewstech/alpha-video:latest ```
+``` docker run -d --restart unless-stopped --name alpha-video -v alpha-video:/data -p 5000:5000 -p 9001:9001 -e localtunnel=false andrewstech/alpha-video:latest ```
 
 
 That command downloads the latest version of the code and runs it in a virtual environment.
