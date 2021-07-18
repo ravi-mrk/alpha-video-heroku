@@ -8,3 +8,4 @@ pygtail
 pyfiglet
 Flask-Ask-alphavideo
 update-check
+requests
