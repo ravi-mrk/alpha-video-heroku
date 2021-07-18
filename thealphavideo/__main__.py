@@ -4,12 +4,13 @@ import os
 from copy import copy
 from youtube_dl import YoutubeDL
 from pytube import *
-from flask import Flask, json, render_template, session
+from flask import Flask, json, render_template, session,request, url_for, flash, redirect, Response, session, stream_with_context
 from flask_ask_alphavideo import Ask, question, statement, audio, current_stream, logger, convert_errors
 from sentry_sdk import last_event_id, set_user
 from sentry_sdk.integrations.flask import FlaskIntegration
 from pygtail import Pygtail
 import sqlite3
+import requests
 
 # version 1.8
 set_user('PRODUCTION')
@@ -95,6 +96,11 @@ def server_error_handler(error):
 @app.route('/version')
 def version():
     return '1.8/pre'
+
+@app.route('/api/proxy/<path:url>')
+def proxy(url):
+    req = requests.get(url, stream = True)
+    return Response(stream_with_context(req.iter_content(chunk_size=1024)), content_type = req.headers['content-type'])
 
 
 @app.route('/api')
