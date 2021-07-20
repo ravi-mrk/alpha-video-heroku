@@ -1,4 +1,4 @@
-# alpha-video!!
+# alpha-video!
 YouTube for your Alexa device.
 
 
