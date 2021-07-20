@@ -5,7 +5,7 @@
 
 - label: "PR Size small"
   message: "Small"
-  color: "blue"
+  color: "green"
   when: "$additions < 200"
 
 - label: "Pull"
