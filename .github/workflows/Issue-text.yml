@@ -12,4 +12,4 @@ jobs:
     - uses: ben-z/actions-comment-on-issue@1.0.2
       with:
         message: "Hey thanks for creating an issue. Andrew will normally respond within 24 hours."
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
