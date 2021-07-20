@@ -1,0 +1,14 @@
+- label: "PR Size"
+  message: "Large"
+  color: "red"
+  when: "$additions > 200"
+
+- label: "PR Size small"
+  message: "Small"
+  color: "green"
+  when: "$additions < 200"
+
+- label: "Pull"
+  message: "PR $prNumber"
+  color: "blue"
+  url: "https://github.com/unofficial-skills/alpha-video/pull/$prNumber"
