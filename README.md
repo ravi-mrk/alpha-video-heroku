@@ -21,3 +21,5 @@ If you would like to help fund projects like this then please click the donate b
 [![WINDOWS BUILD](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml/badge.svg)](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml)
 
 [![Crowdin](https://badges.crowdin.net/alpha-video/localized.svg)](https://translate.andrewstech.me)
+
+Work by unofficial-skills group
