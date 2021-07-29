@@ -14,7 +14,7 @@ module.exports = {
   favicon: 'img/favicon.ico',
   i18n: {
     defaultLocale: 'en',
-    locales: ['en', 'fr', 'es', 'de'],
+    locales: ['en', 'fr', 'es', 'de', 'it'],
   },
   organizationName: 'unofficial-skills', // Usually your GitHub org/user name.
   projectName: 'alpha-video', // Usually your repo name.
