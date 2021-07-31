@@ -1,5 +1,5 @@
 ---
-name: Bug report for community hosts
+name: Bugs when using community hosts
 about: Create a report to help us improve
 title: ''
 labels: ''
