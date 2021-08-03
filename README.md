@@ -22,4 +22,8 @@ If you would like to help fund projects like this then please click the donate b
 
 [![Crowdin](https://badges.crowdin.net/alpha-video/localized.svg)](https://translate.andrewstech.me)
 
-Work by unofficial-skills group
+# Contributions 
+
+<a href="https://github.com/unofficial-skills/alpha-video/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=unofficial-skills/alpha-video" />
+</a>
