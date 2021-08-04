@@ -216,6 +216,10 @@ class QueueManager(object):
 
 queue = QueueManager(playlist)
 
+def ytplay(video):
+    yt = YouTube(video)
+    print(yt.streams.all()[0].url)
+    return audio().play(yt.streams.all()[0].url)
 
 @ask.launch
 def launch():
@@ -224,13 +228,11 @@ def launch():
     return question(question_text).simple_card(card_title, question_text)
 
 
-@ask.intent('PlayList')
+@ask.intent('PlaylistDemoIntent')
 def start_playlist():
     speech = 'Heres a playlist of some sounds. You can ask me Next, Previous, or Start Over'
     stream_url = queue.start()
-    yt = YouTube(stream_url)
-    print(yt.streams.all()[0].url)
-    return audio(speech).play(yt.streams.all()[0].url)
+    return audio(speech).ytplay(stream_url)
 
 
 @ask.intent('QueryIntent', mapping={'query': 'Query'})
@@ -259,8 +261,6 @@ def handle_query_intent(query):
     return question('noresult')
 
 
-# QueueManager object is not stepped forward here.
-# This allows for Next Intents and on_playback_finished requests to trigger the step
 @ask.on_playback_nearly_finished()
 def nearly_finished():
     if queue.up_next:
@@ -276,6 +276,8 @@ def nearly_finished():
         _infodump('Nearly finished with last song in playlist')
 
 
+# QueueManager object is not stepped forward here.
+# This allows for Next Intents and on_playback_finished requests to trigger the step
 @ask.on_playback_finished()
 def play_back_finished():
     _infodump('Finished Audio stream for track {}'.format(queue.current_position))
@@ -293,13 +295,10 @@ def play_back_finished():
 def next_song():
     if queue.up_next:
         speech = 'playing next queued song'
-        next_stream_render = queue.step()
-        yt = YouTube(next_stream_render)
-        print(yt.streams.all()[0].url)
-        next_stream = yt.streams.all()[0].url
+        next_stream = queue.step()
         _infodump('Stepped queue forward to {}'.format(next_stream))
         dump_stream_info()
-        return audio(speech).play(next_stream)
+        return ytplay(next_stream)
     else:
         return audio('There are no more songs in the queue')
 
@@ -308,12 +307,9 @@ def next_song():
 def previous_song():
     if queue.previous:
         speech = 'playing previously played song'
-        prev_stream_render = queue.step_back()
-        yt = YouTube(prev_stream_render)
-        print(yt.streams.all()[0].url)
-        prev_stream = yt.streams.all()[0].url
+        prev_stream = queue.step_back()
         dump_stream_info()
-        return audio(speech).play(prev_stream)
+        return ytplay(prev_stream)
 
     else:
         return audio('There are no songs in your playlist history.')
@@ -324,7 +320,7 @@ def restart_track():
     if queue.current:
         speech = 'Restarting current track'
         dump_stream_info()
-        return audio(speech).play(queue.current, offset=0)
+        return ytplay(queue.current)
     else:
         return statement('There is no current song')
 
@@ -338,7 +334,6 @@ def started(offset, token, url):
 @ask.on_playback_stopped()
 def stopped(offset, token):
     _infodump('Stopped audio stream for track {}'.format(queue.current_position))
-
 
 @ask.intent('AMAZON.PauseIntent')
 def pause():
