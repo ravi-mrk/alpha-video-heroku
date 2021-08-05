@@ -12,7 +12,7 @@ from pygtail import Pygtail
 import sqlite3
 import requests
 
-# version 1.8
+# version 1.9.0-pre
 set_user('PRODUCTION')
 
 
@@ -93,9 +93,9 @@ def server_error_handler(error):
     return render_template("500.html", sentry_event_id=last_event_id()), 500
 
 
-@app.route('/version')
+@app.route('/api/version')
 def version():
-    return '1.8/pre'
+    return '1.9.0-pre'
 
 @app.route('/api/proxy/<path:url>')
 def proxy(url):
