@@ -11,6 +11,7 @@ ENV FLASK_ENV=development
 ENV FLASK_APP=__main__.py
 ENV public=false
 ENV subdomain=nope
+RUN pip install requests
 RUN pip install pytube
 RUN chmod 777 /app/entrypoint.sh
 COPY supervisord.conf /etc/supervisor/supervisord.conf
