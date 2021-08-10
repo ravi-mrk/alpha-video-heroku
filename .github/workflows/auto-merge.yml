@@ -1,0 +1,15 @@
+name: auto merge
+
+on:
+  pull_request:
+    branches: [ main ]
+    
+jobs:
+  merge:
+
+    runs-on: [self-hosted, linux, ARM64]
+    
+    steps:
+    - uses: alexwilson/enable-github-automerge-action@main
+      with:
+        github-token: "${{ secrets.BOT }}"
