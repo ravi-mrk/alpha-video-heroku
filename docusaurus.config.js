@@ -18,17 +18,11 @@ module.exports = {
   },
   organizationName: 'unofficial-skills', // Usually your GitHub org/user name.
   projectName: 'alpha-video', // Usually your repo name.
-  plugins: [
-    'docusaurus-plugin-google-adsense',
-  ],
   themeConfig: {
     gtag: {
       trackingID: 'G-GBCRXFKRY8',
       // Optional fields.
       anonymizeIP: false, // Should IPs be anonymized?
-      },
-      googleAdsense: {
-        dataAdClient: "ca-pub-3119327652471615",
       },
     algolia: {
       apiKey: 'd62d1c5918ea1492fbae354110c2cfed',
