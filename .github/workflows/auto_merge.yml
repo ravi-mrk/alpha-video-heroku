@@ -1,28 +1,15 @@
-name: automerge
+name: auto merge
+
 on:
   pull_request:
-    types:
-      - labeled
-      - unlabeled
-      - synchronize
-      - opened
-      - edited
-      - ready_for_review
-      - reopened
-      - unlocked
-  pull_request_review:
-    types:
-      - submitted
-  check_suite:
-    types:
-      - completed
-  status: {}
+    branches: [ main ]
+    
 jobs:
-  automerge:
-    runs-on: ubuntu-latest
+  merge:
+
+    runs-on: [self-hosted, linux, ARM64]
+    
     steps:
-      - name: automerge
-        uses: "pascalgn/automerge-action@v0.14.2"
-        env:
-          MERGE_LABELS: ""
-          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+    - uses: alexwilson/enable-github-automerge-action@main
+      with:
+        github-token: "${{ secrets.BOT }}"
