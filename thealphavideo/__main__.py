@@ -385,4 +385,7 @@ def _infodump(obj, indent=2):
 
 
 if __name__ == '__main__':
+    import os
+    port = int(os.getenv('PORT', 5000))
+    print ('Starting app on port %d' % port)
     app.run(host=host, port=port)
