@@ -18,7 +18,6 @@ If you would like to help fund projects like this then please click the donate b
 
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](http://paypal.me/andrewstechyoutube)
 
-[![WINDOWS BUILD](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml/badge.svg)](https://github.com/unofficial-skills/alpha-video/actions/workflows/windows.yml)
 
 [![Crowdin](https://badges.crowdin.net/alpha-video/localized.svg)](https://translate.andrewstech.me)
 
