@@ -12,7 +12,7 @@ from pygtail import Pygtail
 import sqlite3
 import requests
 
-# version 1.9.0-pre
+# version 1.8
 set_user('PRODUCTION')
 
 
@@ -76,7 +76,7 @@ app.config.from_mapping(
 )
 
 print("By AndrewsTech")
-
+queue = "1"
 
 @app.errorhandler(404)
 def not_found_error(error):
@@ -93,9 +93,9 @@ def server_error_handler(error):
     return render_template("500.html", sentry_event_id=last_event_id()), 500
 
 
-@app.route('/api/version')
+@app.route('/version')
 def version():
-    return '1.9.0-pre'
+    return '1.8/pre'
 
 @app.route('/api/proxy/<path:url>')
 def proxy(url):
@@ -124,6 +124,7 @@ playlist = p.video_urls
 @app.route('/api')
 def api():
     return render_template('api.html')
+
 
 
 class QueueManager(object):
@@ -214,12 +215,19 @@ class QueueManager(object):
         return len(self._history) + 1
 
 
-queue = QueueManager(playlist)
+
+
 
 def ytplay(video):
-    yt = YouTube(video)
-    print(yt.streams.all()[0].url)
-    return audio().play(yt.streams.all()[0].url)
+    if video.startswith('https://www.youtube.com/'):
+        print('youtube url')
+        yt = YouTube(video)
+        print(yt.streams.all()[0].url)
+        return audio().play(yt.streams.all()[0].url)
+    else:
+        print('stream url')
+        return audio().play(video)
+
 
 @ask.launch
 def launch():
@@ -228,7 +236,8 @@ def launch():
     return question(question_text).simple_card(card_title, question_text)
 
 
-@ask.intent('PlaylistDemoIntent')
+
+@ask.intent('PlaylistIntent')
 def start_playlist():
     speech = 'Heres a playlist of some sounds. You can ask me Next, Previous, or Start Over'
     stream_url = queue.start()
@@ -240,7 +249,7 @@ def handle_query_intent(query):
     if not query or 'query' in convert_errors:
         return question('no results found, try another search query')
 
-    data = ytdl.extract_info(f"ytsearch:{query}", download=False)
+    data = ytdl.extract_info(f"ytsearch5:{query}", download=False)
     search_results = data['entries']
 
     if not search_results:
@@ -252,13 +261,15 @@ def handle_query_intent(query):
     song_name = result['title']
     channel_name = result['uploader']
 
-    for format_ in result['formats']:
-        if format_['ext'] == 'm4a':
-            mp3_url = format_['url']
-            playing = render_template('playing', song_name=song_name, channel_name=channel_name)
-            return audio(playing).play(mp3_url)
+    search = [data['entries'][0]['url'], data['entries'][1]['url'], data['entries'][2]['url'], data['entries'][3]['url'], data['entries'][4]['url'] ]
+    print(search)
+    global queue
+    queue = QueueManager(search)
+    playing = render_template('playing', song_name=song_name, channel_name=channel_name)
+    stream_url = queue.start()
+    audio(playing)
+    return ytplay(stream_url)
 
-    return question('noresult')
 
 
 @ask.on_playback_nearly_finished()
@@ -370,6 +381,7 @@ def dump_stream_info():
 def _infodump(obj, indent=2):
     msg = json.dumps(obj, indent=indent)
     logger.info(msg)
+
 
 
 if __name__ == '__main__':
