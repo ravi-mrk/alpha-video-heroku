@@ -95,7 +95,7 @@ def server_error_handler(error):
 
 @app.route('/version')
 def version():
-    return '1.8/pre'
+    return '1.9.0'
 
 @app.route('/api/proxy/<path:url>')
 def proxy(url):
