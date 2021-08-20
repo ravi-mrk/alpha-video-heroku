@@ -235,7 +235,10 @@ def launch():
     question_text = render_template('welcome')
     return question(question_text).simple_card(card_title, question_text)
 
-
+@ask.intent('AMAZON.FallbackIntent')
+def handle_fallback_intent():
+    fallback = render_template('fallback')
+    return question(fallback)
 
 @ask.intent('PlaylistIntent')
 def start_playlist():
