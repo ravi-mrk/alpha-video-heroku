@@ -1,9 +1,9 @@
 sentry-sdk[flask]
-Flask>=1.1.1
+Flask==1.1.1
 PyYAML>=3.12
-six>=1.11.0
-Werkzeug>=0.16.1
-youtube_dl>=2021.6.6
+six==1.11.0
+Werkzeug==0.16.1
+youtube_dl==2021.6.6
 pygtail
 pyfiglet
 Flask-Ask-alphavideo
